@@ -39,7 +39,11 @@
     <script>
       function getModelFromURL() {
         const params = new URLSearchParams(window.location.search);
-        const allowedModels = ['Example.glb', 'IsometricProjection00.glb', 'OrthographicProjection00.glb'];
+        const allowedModels = ['Example.glb'];
+        for (let i = 0; i <= 40; i++) {
+          allowedModels.push(`IsometricProjection${String(i).padStart(2, '0')}.glb`);
+          allowedModels.push(`OrthographicProjection${String(i).padStart(2, '0')}.glb`);
+      }
         const requestedModel = params.get('model');
         const modelName = allowedModels.includes(requestedModel) ? requestedModel : 'Part1.glb';
         return `Parts/${modelName}`;
