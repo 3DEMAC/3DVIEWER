@@ -5,8 +5,20 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link type="text/css" href="./styles.css" rel="stylesheet"/>
+    <style>
+      .logo {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        height: 50px;
+        z-index: 1000;
+      }
+    </style>
   </head>
   <body>
+    <!-- Logo in the top-left corner -->
+    <img src="logo.png" alt="Logo" class="logo">
+
     <model-viewer id="viewer" ar ar-modes="webxr scene-viewer quick-look"
       camera-controls tone-mapping="neutral"
       shadow-intensity="1" exposure="0.3" shadow-softness="1"
@@ -27,7 +39,7 @@
     <script>
       function getModelFromURL() {
         const params = new URLSearchParams(window.location.search);
-        const allowedModels = ['Example.glb', 'IsometricProjection00.glb', 'OrthographicProjection00.glb']; // Add your models here
+        const allowedModels = ['Example.glb', 'Part2.glb', 'OrthographicProjection00.glb'];
         const requestedModel = params.get('model');
         const modelName = allowedModels.includes(requestedModel) ? requestedModel : 'Part1.glb';
         return `Parts/${modelName}`;
@@ -40,3 +52,4 @@
     </script>
   </body>
 </html>
+
