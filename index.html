@@ -16,22 +16,15 @@
     </style>
   </head>
   <body>
-    <!-- Logo in the top-left corner -->
     <img src="logo.png" alt="Logo" class="logo">
 
-    <model-viewer id="viewer" ar ar-modes="webxr scene-viewer quick-look"
+    <model-viewer id="viewer"
       camera-controls tone-mapping="neutral"
       shadow-intensity="1" exposure="0.3" shadow-softness="1"
       environment-image="legacy" alt="3D model viewer">
 
       <div class="progress-bar hide" slot="progress-bar">
         <div class="update-bar"></div>
-      </div>
-
-      <button slot="ar-button" id="ar-button">View in your space</button>
-
-      <div id="ar-prompt">
-        <img src="ar_hand_prompt.png" alt="AR prompt">
       </div>
     </model-viewer>
 
@@ -43,7 +36,7 @@
         for (let i = 0; i <= 40; i++) {
           allowedModels.push(`IsometricProjection${String(i).padStart(2, '0')}.glb`);
           allowedModels.push(`OrthographicProjection${String(i).padStart(2, '0')}.glb`);
-      }
+        }
         const requestedModel = params.get('model');
         const modelName = allowedModels.includes(requestedModel) ? requestedModel : 'Part1.glb';
         return `Parts/${modelName}`;
@@ -56,4 +49,3 @@
     </script>
   </body>
 </html>
-
